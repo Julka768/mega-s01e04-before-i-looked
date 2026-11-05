@@ -28,6 +28,7 @@ export type Night = {
   night: string; // YYYY-MM-DD, as in the file name
   rows: DigestRow[]; // sorted by job
   badLines: number; // lines that did not parse; counted, never thrown
+  counts: Record<RunStatus, number>; // parsed lines by status, for the board (§ 2c)
 };
 
 // Reads runs/<night>.jsonl. Returns null when the night has no file; an empty file is a Night

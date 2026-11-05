@@ -70,5 +70,7 @@ export const readNight: ReadNight = (runsDir, night) => {
     if (l) lines.push(l);
     else badLines += 1;
   }
-  return { night, rows: toRows(lines), badLines };
+  const counts = { ok: 0, retry: 0, fail: 0 };
+  for (const l of lines) counts[l.status] += 1;
+  return { night, rows: toRows(lines), badLines, counts };
 };
